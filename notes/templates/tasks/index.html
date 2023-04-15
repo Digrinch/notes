@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+  <style>
+    a.new {
+      text-decoration: none;
+      color: #0000FF;
+    }
+    a.new:hover {
+      font-size: 18px;
+    }
+    .core {
+      border-color: #1878d9; /* Цвет границы */
+      border-style: solid; /* Стиль границы */
+      border-radius: 15px;
+      padding: 5px;
+    }
+
+  </style>
+</head>
+<div class="row justify-content-center">
+    <div class="col-3">
+      <p class="text-center">
+      Планируемые задачи
+      </p>
+      <hr>
+      <p class="text-center">
+        <a href="{% url 'tasks:create' %}" class="new">
+          <i class="fa-solid fa-plus"></i>
+          Добавить новую задачу
+        </a>
+      </p>
+      {% for task in planned %}
+        {% include 'includes/note.html' %}
+      {% endfor %}
+    </div>
+    <div class="col-3">
+      <p class="text-center">
+        Задачи в работе
+        </p>
+      <hr>
+      {% for task in worked %}
+        {% include 'includes/work_note.html' %}
+      {% endfor %}
+    </div>
+    <div class="col-3">
+      <p class="text-center">
+      Выполнены за последние 7 дней
+      </p>
+      <hr>
+      {% for task in done %}
+      {% include 'includes/done_note.html' %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock content %}

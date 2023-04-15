@@ -1,0 +1,31 @@
+<head>
+    <style>
+        a.button {
+            margin: 0 auto;
+            margin-bottom: 5px;
+            display: block;
+            width: 250;
+        }
+        p.desc {
+            line-height: 1.1;
+            font-size: 15px;
+            color: grey;
+            margin-bottom: 6px;
+          }
+    </style>
+</head>
+<div class="w-100 p-3">
+    <div class="core">
+    <p class="h6 text-center">
+    {{ task.name }}
+    </p>
+    <p class="desc">{{ task.description }}</p>
+    
+    <a href="{% url 'tasks:take' task.id %}" class=" button btn btn-outline-primary btn-sm" role="button">
+        Начать работать над задачей
+    </a>
+    <a href="{% url 'tasks:edit' task.id %}" class=" button btn btn-outline-secondary btn-sm" role="button">
+        Редактировать задачу <i class="fa-solid fa-pencil"></i>
+    </a>
+</div>
+</div>
